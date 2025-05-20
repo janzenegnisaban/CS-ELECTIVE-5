@@ -128,16 +128,6 @@ export function Navbar() {
                     </div>
                   </div>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
-                    <Link href="/profile" className="cursor-pointer">
-                      Profile
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href="/orders" className="cursor-pointer">
-                      Orders
-                    </Link>
-                  </DropdownMenuItem>
                   {user?.role === "ADMIN" && (
                     <DropdownMenuItem asChild>
                       <Link href="/admin" className="cursor-pointer">

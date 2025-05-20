@@ -15,21 +15,21 @@ export function HeroSection() {
       title: "Delicious Handcrafted Cakes",
       description:
         "Indulge in our premium selection of freshly baked cakes and treats, made with the finest ingredients and delivered right to your door.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/Delicious Handcrafted Cakes.jpg?height=800&width=800?",
       color: "from-pink-200 to-purple-200",
     },
     {
       title: "Special Occasion Cakes",
       description:
         "Make your celebrations unforgettable with our custom-designed cakes for birthdays, weddings, and special events.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/Special Occasion Cakes.jpg?height=800&width=800",
       color: "from-blue-200 to-purple-200",
     },
     {
       title: "Seasonal Favorites",
       description:
         "Try our limited-time seasonal flavors crafted with fresh, local ingredients for a truly unique taste experience.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/Seasonal Favorites.jpg?height=800&width=800",
       color: "from-yellow-200 to-orange-200",
     },
   ]
