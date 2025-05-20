@@ -1,0 +1,12 @@
+{
+  "shippingInfo": {
+    "name": "Test User",
+    "email": "user@example.com",
+    "address": "123 Test Street",
+    "city": "Test City",
+    "state": "Test State",
+    "zipCode": "12345",
+    "phone": "1234567890"
+  },
+  "paymentMethod": "credit-card"
+}

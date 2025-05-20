@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "id": "cake-1",
+      "name": "Chocolate Fudge Cake",
+      "category": "cakes",
+      "price": 42.99,
+      "image": "/placeholder.svg?height=400&width=400",
+      "description": "Rich, moist chocolate cake layered with decadent fudge frosting. Perfect for chocolate lovers and special celebrations."
+    },
+    {
+      "id": "cake-2",
+      "name": "Vanilla Bean Celebration Cake",
+      "category": "cakes",
+      "price": 38.99,
+      "image": "/placeholder.svg?height=400&width=400",
+      "description": "Light and fluffy vanilla cake with real vanilla bean specks, layered with smooth buttercream frosting."
+    },
+    {
+      "id": "cake-3",
+      "name": "Red Velvet Dream",
+      "category": "cakes",
+      "price": 45.99,
+      "image": "/placeholder.svg?height=400&width=400",
+      "description": "Classic red velvet cake with a hint of cocoa, topped with cream cheese frosting and elegant decorations."
+    }
+  ],
+  "newProduct": {
+    "name": "Strawberry Shortcake",
+    "description": "Light and fluffy cake with fresh strawberries and whipped cream",
+    "details": "Our strawberry shortcake features layers of vanilla sponge cake, fresh strawberries, and whipped cream. Perfect for summer celebrations!",
+    "ingredients": "Flour, sugar, eggs, butter, vanilla extract, strawberries, heavy cream, baking powder, salt",
+    "price": 39.99,
+    "image": "/placeholder.svg?height=400&width=400",
+    "category": "cakes",
+    "isNew": true,
+    "isFeatured": false
+  }
+}

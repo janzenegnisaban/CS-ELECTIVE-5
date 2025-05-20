@@ -1,0 +1,17 @@
+{
+  "regularUser": {
+    "email": "user@example.com",
+    "password": "password123",
+    "name": "Test User"
+  },
+  "adminUser": {
+    "email": "admin@sweetdelights.com",
+    "password": "admin123",
+    "name": "Admin User"
+  },
+  "newUser": {
+    "email": "newuser@example.com",
+    "password": "newpassword123",
+    "name": "New Test User"
+  }
+}
