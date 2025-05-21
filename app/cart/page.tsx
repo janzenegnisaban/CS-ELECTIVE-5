@@ -136,10 +136,11 @@ export default function CartPage() {
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
-                <span>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                <span>{shipping === 0 ? "Free" : `₱${shipping.toFixed(2)}`}</span>
               </div>
+
               <div className="flex justify-between">
-                <span>Tax (8%)</span>
+                <span>Tax (6%)</span>
                 <span>₱{tax.toFixed(2)}</span>
               </div>
               <Separator />
