@@ -77,9 +77,9 @@ export default function CartPage() {
                   <div className="flex-1">
                     <div className="flex justify-between">
                       <h3 className="font-medium">{item.name}</h3>
-                      <p className="font-bold">${(item.price * item.quantity).toFixed(2)}</p>
+                      <p className="font-bold">₱{(item.price * item.quantity).toFixed(2)}</p>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-2">${item.price.toFixed(2)} each</p>
+                    <p className="text-sm text-muted-foreground mb-2">₱{item.price.toFixed(2)} each</p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <Button
@@ -140,16 +140,16 @@ export default function CartPage() {
               </div>
               <div className="flex justify-between">
                 <span>Tax (8%)</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>₱{tax.toFixed(2)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold">
                 <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+                <span>₱{total.toFixed(2)}</span>
               </div>
               <div className="text-xs text-muted-foreground">
                 {subtotal < 50 && (
-                  <p className="mt-2">Add ${(50 - subtotal).toFixed(2)} more to qualify for free shipping!</p>
+                  <p className="mt-2">Add ₱{(50 - subtotal).toFixed(2)} more to qualify for free shipping!</p>
                 )}
               </div>
             </CardContent>

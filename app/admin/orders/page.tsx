@@ -76,7 +76,7 @@ export default async function AdminOrdersPage() {
                   </TableCell>
                   <TableCell>{new Date(order.createdAt).toLocaleDateString()}</TableCell>
                   <TableCell>{order.items.length} items</TableCell>
-                  <TableCell>${order.total.toFixed(2)}</TableCell>
+                  <TableCell>₱{order.total.toFixed(2)}</TableCell>
                   <TableCell>
                     <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
                   </TableCell>
