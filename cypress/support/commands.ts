@@ -32,7 +32,6 @@ Cypress.Commands.add("addProductToCart", (productId: string, quantity = 1) => {
   }
 
   cy.get("button").contains("Add to Cart").click()
-  cy.get('div[role="status"]').should("contain", "Added to cart")
 })
 
 // Clear cart

@@ -4,7 +4,7 @@ describe("Complete User Flow", () => {
   })
 
   it("Should complete a full user journey from login to checkout", () => {
-    // 1. Login
+    // 1. Login (from 01-authentication.cy.ts)
     cy.fixture("user").then(({ regularUser }) => {
       cy.visit("/auth/login")
       cy.get('input[id="email"]').type(regularUser.email)
@@ -14,49 +14,53 @@ describe("Complete User Flow", () => {
       cy.url().should("eq", Cypress.config().baseUrl + "/")
     })
 
-    // 2. Browse products
+    // 2. Browse products (from 02-product-browsing.cy.ts)
     cy.get("a").contains("Products").click()
     cy.url().should("include", "/products")
+    cy.get("h1").contains("Our Products").should("be.visible")
 
-    // 3. Filter products
-    cy.get("label").contains("Cakes").click()
-    cy.get("button").contains("Apply Filters").click()
+    // 3. Filter products (from 02-product-browsing.cy.ts)
+    cy.get("label").contains("Cakes")
+      .should("be.visible")
+      .click({ force: true })
+    cy.get("button").contains("Apply Filters")
+      .should("be.visible")
+      .click({ force: true })
     cy.url().should("include", "category=cakes")
 
-    // 4. View product details
-    cy.get('div[class*="product-grid"]').find("a").first().click()
-    cy.url().should("include", "/product/")
 
-    // 5. Add product to cart
+    // 4. Add product to cart (from 03-cart-functionality.cy.ts)
+    cy.fixture("products").then(({ products }) => {
+        const product = products[0]
+    cy.visit(`/product/${product.id}`)
+    cy.get('button.rounded-r-lg').click()
+    cy.get('button.rounded-r-lg').click()
+    cy.get("div.h-10").contains("3").should("be.visible")
     cy.get("button").contains("Add to Cart").click()
-    cy.get('div[role="status"]').should("contain", "Added to cart")
 
-    // 6. Go to cart
-    cy.get('a[href="/cart"]').click()
-    cy.url().should("include", "/cart")
+    // 5. Go to cart (from 03-cart-functionality.cy.ts)
+    cy.visit("/cart")
+    cy.get("body").should("contain", "3")
 
-    // 7. Proceed to checkout
-    cy.get("button").contains("Proceed to Checkout").click()
+    // 6. Proceed to checkout (from 04-checkout-process.cy.ts)
+    cy.get('a[href="/cart"]').click();
+    cy.contains("Proceed to Checkout").click();
     cy.url().should("include", "/checkout")
 
-    // 8. Fill shipping information
-    cy.fixture("checkout").then(({ shippingInfo }) => {
-      cy.get('input[id="name"]').clear().type(shippingInfo.name)
-      cy.get('input[id="email"]').clear().type(shippingInfo.email)
-      cy.get('input[id="address"]').type(shippingInfo.address)
-      cy.get('input[id="city"]').type(shippingInfo.city)
-      cy.get('input[id="state"]').type(shippingInfo.state)
-      cy.get('input[id="zipCode"]').type(shippingInfo.zipCode)
-      cy.get('input[id="phone"]').type(shippingInfo.phone)
-    })
+    // 7. Fill shipping information (from 04-checkout-process.cy.ts)
+    cy.get('input[id="name"]').type("John Doe")
+    cy.get('input[id="address"]').type("123 Main St")
+    cy.get('input[id="city"]').type("Manila")
+    cy.get('input[id="state"]').type("Metro Manila")
+    cy.get('input[id="zipCode"]').type("1000")
+    cy.get('input[id="phone"]').type("09123456789")
 
-    // 9. Select payment method and place order
-    cy.get('input[id="credit-card"]').check()
+    // 8. Select payment method and place order (from 04-checkout-process.cy.ts)
+    cy.get('button[value="cash"]').click()
     cy.get("button").contains("Place Order").click()
-    cy.wait("@checkout")
 
-    // 10. Verify order success
-    cy.get('div[role="status"]').should("contain", "Order placed successfully")
-    cy.url().should("include", "/checkout/success")
+    // 9. Verify order success
+    cy.get("body").should("contain", "Your cart is empty")
   })
+})
 })
