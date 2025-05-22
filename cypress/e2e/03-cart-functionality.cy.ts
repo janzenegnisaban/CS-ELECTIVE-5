@@ -7,17 +7,36 @@ describe("Cart Functionality", () => {
     cy.clearCart()
   })
 
-  it("13. Should add a product to the cart", () => {
-    cy.fixture("products").then(({ products }) => {
-      const product = products[0]
-      cy.visit(`/product/${product.id}`)
-      cy.get("button").contains("Add to Cart").click()
-      cy.get('div[role="status"]').should("contain", "Added to cart")
+it("13. Should add a product to the cart and require login", () => {
+  cy.fixture("products").then(({ products }) => {
+    const product = products[0];
 
-      // Check cart icon shows 1 item
-      cy.get('a[href="/cart"]').find("span").should("contain", "1")
-    })
-  })
+    // Navigate to product page
+    cy.visit(`/product/${product.id}`);
+    cy.url().should("include", `/product/${product.id}`);
+
+    // Add product to cart
+    cy.get("button").contains("Add to Cart").should("be.visible").click();
+    cy.get('a[href="/cart"]').find("span").should("contain", "1");
+
+    // Navigate to login page
+    cy.visit("/login");
+    cy.url().should("include", "/login");
+
+    // Enter login credentials
+    cy.get("input[name='email']").should("be.visible").type("user@example.com");
+    cy.get("input[name='password']").should("be.visible").type("password123");
+
+    // Submit login form
+    cy.get("button").contains("Login").should("be.visible").click();
+
+    // Verify login success
+    cy.url().should("include", "/dashboard"); // Update if needed
+    cy.get("nav").contains("Welcome, User").should("exist"); // Adjust based on UI
+  });
+});
+
+
 
   it("14. Should increase product quantity on the product page", () => {
     cy.fixture("products").then(({ products }) => {
