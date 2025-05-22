@@ -75,7 +75,7 @@ describe("Product Browsing", () => {
       .should("be.visible")
       .click();
 
-    cy.get("div").contains("Showing 5 products")
+    cy.get("div").contains("Showing 6 products")
       .should("exist"); // Ensures the correct message appears after resetting
 
   })
